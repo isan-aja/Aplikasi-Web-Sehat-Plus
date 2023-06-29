@@ -1,8 +1,9 @@
 Login
-
+======================
 username = ikhsan
 
 password = password
+======================
 
 Daftar sebagai pasien
 
@@ -12,7 +13,7 @@ Pilih Dokter
 
 Rekam Medis
 
-
+======================================================================================================================================
 
 XAMPP Versi 5.6.37 Apache/2.4.34 PHPMyadmin 4.8.2 Cara Instalasi Sistem Ini Pada Komputer/Laptop/Netbook
 
