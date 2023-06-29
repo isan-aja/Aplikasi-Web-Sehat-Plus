@@ -1,7 +1,8 @@
 Login
 
----username = ikhsan
----password = password
+username = ikhsan
+
+password = password
 
 Daftar sebagai pasien
 
