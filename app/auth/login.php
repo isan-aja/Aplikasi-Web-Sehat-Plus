@@ -3,7 +3,7 @@ session_start();
 require_once '../functions/MY_model.php';
 require_once '../functions/config.php';
 
-$url = 'http://localhost/aplikasisehat/';
+$url = 'https://sehatplus.000webhostapp.com/';
 if (isset($_SESSION['user'])) {
   echo '<script>document.location.href="' . $url . '"</script>';
   exit;
@@ -113,6 +113,7 @@ if (isset($_POST['login'])) {
                           </fieldset>
                           <!-- <a href="auth-register.html" class="btn btn-outline-primary float-left btn-inline">Register</a> -->
                           <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+                          <p class="mt-2">Belum punya akun? <a href="register.php">Daftar disini</a></p>
                         </form>
                       </div>
                     </div>

@@ -51,19 +51,19 @@ if (isset($_GET['page'])) {
 			require_once 'app/ruang/proses/delete.php';
 			break;
 		case 'rekam-medis':
-			require_once 'app/Daftar Konsultasi/views/index.php';
+			require_once 'app/daftar_konsultasi/views/index.php';
 			break;
 		case 'tambah-rekam-medis':
-			require_once 'app/rekam-medis/views/create.php';
+			require_once 'app/daftar_konsultasi/views/create.php';
 			break;
 		case 'edit-rekam-medis':
-			require_once 'app/rekam-medis/views/edit.php';
+			require_once 'app/daftar_konsultasi/views/edit.php';
 			break;
 		case 'hapus-rekam-medis':
-			require_once 'app/rekam-medis/proses/delete.php';
+			require_once 'app/daftar_konsultasi/proses/delete.php';
 			break;
 		case 'lap-rekam-medis':
-			require_once 'app/laporan/views/rekam-medis.php';
+			require_once 'app/laporan/views/rekam_medis.php';
 			break;
 	}
 } else {

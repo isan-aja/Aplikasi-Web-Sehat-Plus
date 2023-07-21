@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../functions/MY_model.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST")
 $pasien_id = $_POST['pasien_id'];
 $dokter_id = $_POST['dokter_id'];
 $ruang_id = $_POST['ruang_id'];

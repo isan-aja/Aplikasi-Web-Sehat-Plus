@@ -22,7 +22,7 @@ $obats = get("SELECT * FROM obat");
         </div>
         <div class="card-content">
           <div class="card-body">
-            <form action="app/rekam-medis/proses/create.php" method="post">
+            <form action="app/daftar_konsultasi/proses/create.php" method="post">
               <div class="form-body">
                 <div class="row">
                   <div class="col-12">

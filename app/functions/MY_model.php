@@ -42,18 +42,33 @@ function delete($query)
   return mysqli_affected_rows($conn);
 }
 
-function register()
-{
+// Fungsi untuk membersihkan input dari SQL injection
+function sanitize_input($input) {
+  global $conn;
+  return htmlspecialchars(mysqli_real_escape_string($conn, trim($input)));
+}
+// Fungsi untuk pendaftaran pengguna
+function register($group_id, $username, $password, $last_login, $created_at) {
   global $conn;
 
-  $username = 'admin';
-  $password = password_hash('password', PASSWORD_DEFAULT);
-  $created_at = date('Y-m-d H:i:s');
+  // Membersihkan input
+  $group_id = sanitize_input($group_id);
+  $username = sanitize_input($username);
+  $password = sanitize_input($password);
+  $last_login = sanitize_input($last_login);
+  $created_at = sanitize_input($created_at);
 
-  $username = 'ikhsan';
-  $password = password_hash('password', PASSWORD_DEFAULT);
-  $created_at = date('Y-m-d H:i:s');
 
-  mysqli_query($conn, "INSERT INTO users VALUES('', '1', '$username', '$password', '', '$created_at')");
-  return mysqli_affected_rows($conn);
+  // Hash password
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+// Query INSERT ke database
+$query = "INSERT INTO users (group_id, username, password, last_login, created_at) 
+VALUES ('$group_id', '$username', '$hashed_password', '$last_login', '$created_at')";
+
+// Eksekusi query
+$result = mysqli_query($conn, $query);
+
+// Mengembalikan hasil eksekusi query
+return $result;
 }

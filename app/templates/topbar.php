@@ -1,3 +1,12 @@
+<?php
+// topbar.php
+
+// Mulai sesi jika belum dimulai
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!-- BEGIN: Header-->
 <div class="content-overlay"></div>
 <div class="header-navbar-shadow"></div>
@@ -13,14 +22,34 @@
         <ul class="nav navbar-nav float-right">
           <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
 
-          <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-              <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"><?php echo $_SESSION['user']['username']; ?></span><span class="user-status">Available</span></div><span><img class="round" src="assets/images/portrait/small/avatar-s-11.png" alt="avatar" height="40" width="40" /></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a>
-              <a class="dropdown-item" href="<?php echo 'app/auth/logout.php'; ?>"><i class="feather icon-power"></i> Logout</a>
-            </div>
-          </li>
+          <?php
+          // Periksa apakah pengguna sudah login (data sesi ada)
+          if (isset($_SESSION['user']) && $_SESSION['user'] !== null) {
+          ?>
+            <li class="dropdown dropdown-user nav-item">
+              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                <div class="user-nav d-sm-flex d-none">
+                  <span class="user-name text-bold-600"><?php echo $_SESSION['user']['username']; ?></span>
+                  <span class="user-status">Available</span>
+                </div>
+                <span><img class="round" src="assets/images/portrait/small/avatar-s-11.png" alt="avatar" height="40" width="40" /></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="app/auth/edit_profile.php"><i class="feather icon-user"></i> Edit Profile</a>
+                <a class="dropdown-item" href="<?php echo 'app/auth/logout.php'; ?>"><i class="feather icon-power"></i> Logout</a>
+              </div>
+            </li>
+          <?php
+          } else {
+            // Jika pengguna belum login, tampilkan tautan login
+          ?>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Login</a>
+            </li>
+          <?php
+          }
+          ?>
+
         </ul>
       </div>
     </div>
